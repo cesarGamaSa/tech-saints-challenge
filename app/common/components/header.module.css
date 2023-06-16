@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    padding: 1rem 1.5rem;
+}
+
+.header nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categoryList {
+    display: flex;
+    flex-direction: row;
+}
+
+.categoryList li {
+    display: initial;
+    padding: 0 1rem;
+}

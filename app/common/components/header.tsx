@@ -1,5 +1,6 @@
 'use client';
 
+import styles from './header.module.css';
 import { useEffect, useState } from "react";
 import { getCategories } from "../services/market.service";
 import Image from 'next/image';
@@ -19,7 +20,7 @@ export default function Header() {
     });
 
     return (
-        <header>
+        <header className={styles.header}>
             <nav>
                 <Link href="/">
                     <Image
@@ -30,7 +31,7 @@ export default function Header() {
                         priority
                     />
                 </Link>
-                <ul>
+                <ul className={styles.categoryList}>
                     <li key="all">
                         <Link href="/products">All products</Link>
                     </li>

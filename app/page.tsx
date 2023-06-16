@@ -23,12 +23,25 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Header />
-      <div className='landing-content'>
-        <div>
+      <div className={styles.landingContent} style={{
+        backgroundImage: `url(${page.image?.url})`,
+        width: '100%',
+        height: 'calc(100vh - 60px)',
+      }}>
+        <div className={styles.heading}>
           <h1>{page.title}</h1>
           <p>{page.subTitle}</p>
         </div>
-        <div></div>
+        <div className={styles.user}>
+          <Image
+              src={page.userImage?.url}
+              alt="Logo"
+              width={128}
+              height={128}
+              priority
+          />
+          <p>{page.userName}</p>
+        </div>
       </div>
     </main>
   )
