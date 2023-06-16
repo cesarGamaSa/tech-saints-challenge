@@ -7,10 +7,14 @@ import Link from "next/link";
 
 export default function Header() {
     const [categories, setCategories] = useState<string[]>([]);
+    const [needFetching, setNeedFetching] = useState(true);
 
     useEffect(() => {
+        if (!needFetching) return;
+
         getCategories().then((data) => {
             setCategories(data);
+            setNeedFetching(false);
         });
     });
 

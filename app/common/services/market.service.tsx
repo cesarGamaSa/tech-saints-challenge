@@ -5,7 +5,7 @@ export async function getCategories() {
 }
 
 export async function getCategory(name: string) {
-    return await fetch(basicApi + 'categories' + name).then(res => res.json());
+    return await fetch(basicApi + 'categories/' + name).then(res => res.json());
 }
 
 export async function getProducts() {
