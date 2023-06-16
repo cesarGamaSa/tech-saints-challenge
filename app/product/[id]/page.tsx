@@ -15,7 +15,17 @@ export default function Product({ params }: { params: { id: string } }) {
 
     return (
         <div>
-            {product.name}
+            <div>
+                <img src={product.image} alt="Product Image" />
+                <div>
+                    <p>{product.name}</p>
+                    <p>{product.description}</p>
+                    <p>Category: {product.category}</p>
+                </div>
+                <div>
+                    <p>{product.price}</p>
+                </div>
+            </div>
         </div>
     );
 }

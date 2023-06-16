@@ -22,7 +22,6 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Header />
       <div className={styles.landingContent} style={{
         backgroundImage: `url(${page.image?.url})`,
         width: '100%',

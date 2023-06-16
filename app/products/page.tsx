@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Product } from "../common/types/product.model";
 import { useSearchParams } from 'next/navigation';
 import { getCategory, getProducts } from "../common/services/market.service";
-import Header from "../common/components/header";
 import Link from "next/link";
 
 export default function Products() {
@@ -25,12 +24,14 @@ export default function Products() {
 
     return (
         <div>
-            <Header />
-            {products.map((product) => 
-                <div key={product.id}>
-                    <Link href={`/product/${product.id}`}>{product.name}</Link>
-                </div>
-            )}
+            <div>
+                {products.map((product) => 
+                    <div key={product.id}>
+                        <Link href={`/product/${product.id}`}>{product.name}</Link>
+                        <p>{product.price}</p>
+                    </div>
+                )}    
+            </div>
         </div>
     );
 }
