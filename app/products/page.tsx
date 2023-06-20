@@ -1,26 +1,27 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import { ProductType } from "../common/types/product.model";
 import { useSearchParams } from 'next/navigation';
-import { getCategory, getProducts } from "../common/services/market.service";
+import { ProductType } from "../common/types/product.model";
+import { getProducts } from "../common/services/market.service";
 import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { getProductsByCategory, getStoredProducts } from "../store/products/products.selector";
 
 export default function Products() {
-    const [products, setProducts] = useState<ProductType[]>([]);
     const query = useSearchParams().get('category');
+    const state = useAppSelector(state => state);
+    const dispatch = useAppDispatch();
+    let products: ProductType[];
 
-    useEffect(() => {
-        if (query) {
-            getCategory(query).then((data) => {
-                setProducts(data);
-            });;
-        } else {
-            getProducts().then((data) => {
-                setProducts(data);
-            });
-        }
-    });
+    if (query) {
+        products = getProductsByCategory(state, query);
+    } else {
+        products = getStoredProducts(state);
+    }
+
+    if (!products?.length) {
+        dispatch(getProducts());
+    }
 
     return (
         <div>

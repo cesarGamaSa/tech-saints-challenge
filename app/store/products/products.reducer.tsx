@@ -1,15 +1,17 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { setCategories, setProducts } from "./products.actions";
+import { setCategories, setProduct, setProducts } from "./products.actions";
 import { ProductType } from "@/app/common/types/product.model";
 
 interface ProductState {
     categories: string[];
     products: ProductType[];
+    product: ProductType;
 }
 
 const initialState: ProductState = {
     categories: [],
-    products: []
+    products: [],
+    product: {} as ProductType
 };
 
 export const productsReducer = createReducer(initialState, (builder) => {
@@ -19,5 +21,8 @@ export const productsReducer = createReducer(initialState, (builder) => {
         })
         .addCase(setProducts, (state, action) => {
             state.products = action.payload
+        })
+        .addCase(setProduct, (state, action) => {
+            state.product = action.payload
         })
 });

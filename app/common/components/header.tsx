@@ -1,23 +1,19 @@
 'use client';
 
 import styles from './header.module.css';
-import { useEffect, useState } from "react";
 import { getCategories } from "../services/market.service";
 import Image from 'next/image';
 import Link from "next/link";
+import { getStoredCategories } from '@/app/store/products/products.selector';
+import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 
 export default function Header() {
-    const [categories, setCategories] = useState<string[]>([]);
-    const [needFetching, setNeedFetching] = useState(true);
+    const dispatch = useAppDispatch();
+    const categories = getStoredCategories(useAppSelector(state => state));
 
-    useEffect(() => {
-        if (!needFetching) return;
-
-        getCategories().then((data) => {
-            setCategories(data);
-            setNeedFetching(false);
-        });
-    });
+    if (!categories.length) {
+        dispatch(getCategories());
+    }
 
     return (
         <header className={styles.header}>

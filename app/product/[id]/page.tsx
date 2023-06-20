@@ -1,20 +1,20 @@
 'use client';
 
 import { getProduct } from "@/app/common/services/market.service";
-import { useEffect, useState } from "react";
-import { ProductType } from "../../common/types/product.model";
+import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
+import { getStoredProduct } from "@/app/store/products/products.selector";
 
 export default function Product({ params }: { params: { id: string } }) {
-    const [product, setProduct] = useState<ProductType>({} as ProductType);
+    const dispatch = useAppDispatch();
+    const state = useAppSelector(state => state);
+    const product = getStoredProduct(state);
 
-    useEffect(() => {
-        getProduct(+params.id).then((data) => {
-            setProduct(data);
-        });
-    });
+    if (product?.id !== +params.id) {
+        dispatch(getProduct(+params.id));
+    }
 
     return (
-        <div>
+        product?.id === +params.id && <div>
             <div>
                 <img src={product.image} alt="Product Image" />
                 <div>

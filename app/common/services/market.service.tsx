@@ -1,17 +1,19 @@
+import { setCategories, setProduct, setProducts } from "@/app/store/products/products.actions";
+import { Action, Dispatch } from "redux";
+
 const basicApi = 'https://esaintsmarket.onrender.com/';
 
-export async function getCategories() {
-    return await fetch(basicApi + 'categories').then(res => res.json());
+export const getCategories = () => async (dispatch: Dispatch<Action>) => {
+    const response = await fetch(basicApi + 'categories').then(res => res.json());
+    dispatch(setCategories(response));
 }
 
-export async function getCategory(name: string) {
-    return await fetch(basicApi + 'categories/' + name).then(res => res.json());
+export const getProducts = () => async (dispatch: Dispatch<Action>) => {
+    const response = await fetch(basicApi + 'products').then(res => res.json());
+    dispatch(setProducts(response));
 }
 
-export async function getProducts() {
-    return await fetch(basicApi + 'products').then(res => res.json());
-}
-
-export async function getProduct(id: number) {
-    return await fetch(basicApi + 'products/' + id).then(res => res.json());
+export const getProduct = (id: number) => async (dispatch: Dispatch<Action>) => {
+    const response = await fetch(basicApi + 'products/' + id).then(res => res.json());
+    dispatch(setProduct(response));
 }
