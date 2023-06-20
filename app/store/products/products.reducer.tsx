@@ -1,10 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { setCategories, setProducts } from "./products.actions";
-import { Product } from "@/app/common/types/product.model";
+import { ProductType } from "@/app/common/types/product.model";
 
 interface ProductState {
     categories: string[];
-    products: Product[];
+    products: ProductType[];
 }
 
 const initialState: ProductState = {

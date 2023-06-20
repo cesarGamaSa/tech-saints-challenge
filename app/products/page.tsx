@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { Product } from "../common/types/product.model";
+import { ProductType } from "../common/types/product.model";
 import { useSearchParams } from 'next/navigation';
 import { getCategory, getProducts } from "../common/services/market.service";
 import Link from "next/link";
 
 export default function Products() {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<ProductType[]>([]);
     const query = useSearchParams().get('category');
 
     useEffect(() => {
