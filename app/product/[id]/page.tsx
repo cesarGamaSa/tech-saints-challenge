@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { getProduct } from "@/app/common/services/market.service";
+import { addProductToCart } from "@/app/store/cart/cart.actions";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import { getStoredProduct } from "@/app/store/products/products.selector";
 
@@ -24,6 +26,7 @@ export default function Product({ params }: { params: { id: string } }) {
                 </div>
                 <div>
                     <p>{product.price}</p>
+                    <button onClick={() => dispatch(addProductToCart(product))}>Add to cart</button>
                 </div>
             </div>
         </div>

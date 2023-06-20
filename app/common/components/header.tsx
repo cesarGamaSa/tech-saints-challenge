@@ -40,6 +40,15 @@ export default function Header() {
                         </li>
                     )}
                 </ul>
+                <Link href="/cart">
+                    <Image
+                        src="/cart.svg"
+                        alt="Cart"
+                        width={20}
+                        height={20}
+                        priority
+                    />
+                </Link>
             </nav>
         </header>
     );

@@ -6,6 +6,7 @@ import { getProducts } from "../common/services/market.service";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { getProductsByCategory, getStoredProducts } from "../store/products/products.selector";
+import { addProductToCart } from '../store/cart/cart.actions';
 
 export default function Products() {
     const query = useSearchParams().get('category');
@@ -30,6 +31,7 @@ export default function Products() {
                     <div key={product.id}>
                         <Link href={`/product/${product.id}`}>{product.name}</Link>
                         <p>{product.price}</p>
+                        <button onClick={() => dispatch(addProductToCart(product))}>Add to cart</button>
                     </div>
                 )}    
             </div>
