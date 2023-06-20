@@ -5,7 +5,6 @@ import styles from './page.module.css'
 import { useEffect, useState } from 'react';
 import { getLandingPage } from './common/services/contentful.service';
 import { LandingPage } from './common/types/landingPage.model';
-import Header from './common/components/header';
 
 export default function Home() {
   const [page, setPage] = useState<LandingPage>({} as LandingPage);
