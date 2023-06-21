@@ -2,6 +2,7 @@
 
 import Header from './common/components/header';
 import './globals.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import { Inter } from 'next/font/google';
 import { store } from './store/store';
 import { Provider } from 'react-redux';

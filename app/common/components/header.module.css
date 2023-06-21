@@ -13,9 +13,15 @@
 .categoryList {
     display: flex;
     flex-direction: row;
+    margin-bottom: 0;
 }
 
 .categoryList li {
     display: initial;
     padding: 0 1rem;
+}
+
+.header a {
+    text-decoration: none;
+    color: black;
 }

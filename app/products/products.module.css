@@ -1,0 +1,25 @@
+.productsContainer {
+    padding: 0 1.5rem;
+}
+
+.productItem {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.5rem;
+}
+
+.productItem img {
+    max-height: 80px;
+    padding-right: 1rem;
+    object-fit: contain;
+}
+
+.productItem button {
+    height: fit-content;
+    align-self: center;
+    margin-left: auto;
+}
+
+.productItem a {
+    text-decoration: none;
+}

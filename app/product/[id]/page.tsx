@@ -16,17 +16,19 @@ export default function Product({ params }: { params: { id: string } }) {
     }
 
     return (
-        product?.id === +params.id && <div>
-            <div>
-                <img src={product.image} alt="Product Image" />
-                <div>
-                    <p>{product.name}</p>
-                    <p>{product.description}</p>
-                    <p>Category: {product.category}</p>
-                </div>
-                <div>
-                    <p>{product.price}</p>
-                    <button onClick={() => dispatch(addProductToCart(product))}>Add to cart</button>
+        product?.id === +params.id && <div className='px-4'>
+            <div className="row">
+                <img src={product.image} alt="Product Image" className="col-4" />
+                <div className="col-8">
+                    <div>
+                        <h2>{product.name}</h2>
+                        <p>{product.description}</p>
+                        <p>Category: {product.category}</p>
+                    </div>
+                    <div>
+                        <p>{product.price}€</p>
+                        <button onClick={() => dispatch(addProductToCart(product))} className="btn btn-primary w-100">Add to cart</button>
+                    </div>
                 </div>
             </div>
         </div>
