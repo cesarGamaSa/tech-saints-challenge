@@ -23,12 +23,13 @@ export default function Product({ params }: { params: { id: string } }) {
                     <div>
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>
-                        <p>Category: {product.category}</p>
+                        <p>
+                            <span>Category: {product.category}</span>
+                            <br />
+                            <span>{product.price}€</span>
+                        </p>
                     </div>
-                    <div>
-                        <p>{product.price}€</p>
-                        <button onClick={() => dispatch(addProductToCart(product))} className="btn btn-primary w-100">Add to cart</button>
-                    </div>
+                    <button onClick={() => dispatch(addProductToCart(product))} className="btn btn-primary w-100">Add to cart</button>
                 </div>
             </div>
         </div>

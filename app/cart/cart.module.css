@@ -4,3 +4,17 @@
     flex-direction: column;
     align-items: center;
 }
+
+.cartContainer {
+    padding: 0 1.5rem;
+}
+
+.cartContainer > div {
+    margin-bottom: 1rem;
+}
+
+.cartContainer > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

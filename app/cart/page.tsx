@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import Image from 'next/image';
@@ -21,15 +22,33 @@ export default function Cart() {
         );
     }
 
+    function getCartTotal() {
+        let total = 0;
+        for (let el of cart) {
+            total += el.amount * el.product.price;
+        }
+        return total;
+    }
+
     return (
-        <div>
+        <div className={styles.cartContainer}>
             {cart.map(el =>
-                <div key={el.product.id}>
-                    <p>{el.product.name}</p>
-                    <p>{el.amount}</p>
-                    <button onClick={() => dispatch(deleteProduct(el.product.id))} className="btn btn-danger">Delete</button>
-                </div>    
+                <div key={el.product.id} className='row'>
+                    <img src={el.product.image} alt="Product Image" className="col-4" />
+                    <div className='col-8'>
+                        <div>
+                            <h4>{el.product.name}</h4>
+                            <p>
+                                <span>{el.product.price}€</span>
+                                <br />
+                                <span>Amount: {el.amount}</span>
+                            </p>
+                        </div>
+                        <button onClick={() => dispatch(deleteProduct(el.product.id))} className="btn btn-danger w-100">Delete</button>
+                    </div>
+                </div>
             )}
+            <p>Total: {getCartTotal()}€</p>
         </div>
     );
 }
