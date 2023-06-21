@@ -6,10 +6,15 @@ import Image from 'next/image';
 import Link from "next/link";
 import { getStoredCategories } from '@/app/store/products/products.selector';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
+import { useState } from 'react';
+import { getStoredCart } from '@/app/store/cart/cart.selector';
 
 export default function Header() {
     const dispatch = useAppDispatch();
-    const categories = getStoredCategories(useAppSelector(state => state));
+    const state = useAppSelector(state => state);
+    const categories = getStoredCategories(state);
+    const cart = getStoredCart(state);
+    const [isShown, setIsShown] = useState(false);
 
     if (!categories.length) {
         dispatch(getCategories());
@@ -40,7 +45,7 @@ export default function Header() {
                         </li>
                     )}
                 </ul>
-                <Link href="/cart">
+                <Link href="/cart" onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} className={styles.cartIcon}>
                     <Image
                         src="/cart.svg"
                         alt="Cart"
@@ -50,6 +55,21 @@ export default function Header() {
                     />
                 </Link>
             </nav>
+            {isShown && (
+                <div className={styles.miniCart} onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+                    {cart.map(el =>
+                        <div key={el.product.id} className='col'>
+                            <span>{el.product.name}</span>
+                            <br />
+                            <p className={styles.cartValues}>
+                                <span>{el.product.price}€</span>
+                                <span>Amount: {el.amount}</span>
+                            </p>
+                        </div>
+                    )}
+                    <Link href="/cart" className='btn btn-primary w-100'>Go to cart</Link>
+                </div>
+            )}
         </header>
     );
 }

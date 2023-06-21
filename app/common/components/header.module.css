@@ -25,3 +25,22 @@
     text-decoration: none;
     color: black;
 }
+
+.cartIcon {
+    position: relative;
+}
+.miniCart {
+    position: absolute;
+    right: 1.5rem;
+    z-index: 1;
+    min-width: 200px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.cartValues {
+    display: flex;
+    justify-content: space-between;
+}
