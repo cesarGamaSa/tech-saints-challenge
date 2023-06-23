@@ -48,7 +48,7 @@ export default function Cart() {
                     </div>
                 </div>
             )}
-            <p>Total: {getCartTotal()}€</p>
+            <p><strong>Total:</strong> {getCartTotal()}€</p>
         </div>
     );
 }

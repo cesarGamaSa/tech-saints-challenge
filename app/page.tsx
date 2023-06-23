@@ -31,13 +31,13 @@ export default function Home() {
           <p>{page.subTitle}</p>
         </div>
         <div className={styles.user}>
-          <Image
+          {page.userImage?.url && <Image
               src={page.userImage?.url}
               alt="Logo"
               width={128}
               height={128}
               priority
-          />
+          />}
           <p>{page.userName}</p>
         </div>
       </div>

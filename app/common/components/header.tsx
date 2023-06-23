@@ -57,17 +57,21 @@ export default function Header() {
             </nav>
             {isShown && (
                 <div className={styles.miniCart} onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
-                    {cart.map(el =>
-                        <div key={el.product.id} className='col'>
-                            <span>{el.product.name}</span>
-                            <br />
-                            <p className={styles.cartValues}>
-                                <span>{el.product.price}€</span>
-                                <span>Amount: {el.amount}</span>
-                            </p>
+                    {cart.length > 0 && 
+                        <div>
+                            {cart.map(el =>
+                            <div key={el.product.id} className='col'>
+                                <span>{el.product.name}</span>
+                                <br />
+                                <p className={styles.cartValues}>
+                                    <span>{el.product.price}€</span>
+                                    <span>Amount: {el.amount}</span>
+                                </p>
+                            </div>)}
+                            <Link href="/cart" className='btn btn-primary w-100'>Go to cart</Link>
                         </div>
-                    )}
-                    <Link href="/cart" className='btn btn-primary w-100'>Go to cart</Link>
+                    }
+                    {cart.length === 0 && <p>Cart is empty.</p>}
                 </div>
             )}
         </header>
